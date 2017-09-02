@@ -1,0 +1,83 @@
+{% load argonauts %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>Driver</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  <script src="http://maps.google.com/maps/api/js?key=AIzaSyALEfn94xyoXdklNjPfI30ROKXzSJZpvYQ&sensor=false" type="text/javascript"></script>
+</head>
+
+<body>
+
+
+  <div class="container">
+    <div class="col-md-8 push-md-2">
+      <div class="row">
+        <h1>Driver</h1>
+      </div>
+      <div class="row">
+        <form>
+          {{ form.as_p }}
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+      <div class="row">
+        <div id="map" style="width: 500px; height: 400px;"></div>
+      </div>
+      <div class="row">
+        <div id="recommendations"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+    var locations = {{ recommendations | json }}
+    var center = new google.maps.LatLng({{form.data.lat}}, {{form.data.lng}});
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: center,
+    });
+
+    new google.maps.Marker({map: map, position: center});
+
+
+    google.maps.event.addListener(map, 'click', function( event ){
+      window.location = "/?lat="+event.latLng.lat() + "&lng=" + event.latLng.lng();
+    });
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+      var letter = String.fromCharCode("A".charCodeAt(0) + i),
+        marker = new google.maps.Marker({
+          map: this.map,
+          position: {
+            lng: locations[i][0],
+            lat: locations[i][1]
+          },
+          icon: "http://maps.google.com/mapfiles/marker" + letter + ".png",
+          animation: google.maps.Animation.DROP
+        });
+
+      var directionsUrl = 'https://www.google.com/maps/dir/Current+Location/' + locations[i][0] + ',' + locations[i][1]
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          window.open(directionsUrl,'_blank');
+        }
+      })(marker, i));
+    }
+
+  </script>
+</body>
+
+</html>
