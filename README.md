@@ -1,11 +1,26 @@
 # Sistema Recomendador de Taxis para Big Data
 > Jorge Barata González, Proyecto Final de Carrera, Ingeniería Informática Superior, UC3M
+
 > Tutor: Pablo Basanta Val
 
 
-## Análisis 10 millones de trazas de los taxis amarillos de nueva york
+## Limpieza de los datos
 
-- Limpieza de los datos
+```
+Total, 10906858
+Inside boros boundaries, 10736161
+Passenger count > 0 10735675
+Distance > 0, 10683655
+Distance < 100, 10683649
+Total amount > 0, 10680418
+Pickup time lower than Dropoff time, 10680131
+Trip time lower than 3 hours, 10663592
+```
+
+## Análisis
+
+10 millones de trazas de los taxis amarillos de nueva york
+
 - Se encuentran correlacciones entre beneficio economico y tiempo, distancia y numero de pasajeros.
 - Se encuentran que la frecuencia de viajes cambia significativamente segun el dia y la hora. Cada dia tiene un patron distinto excepto martes, miercoles y jueves.
 - Se encuentran agrupaciones de trazas en localidades concretas que varian segun el dia de la semana y la hora.
