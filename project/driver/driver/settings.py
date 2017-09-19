@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'driver',
-        'USER': 'jorge',
+        'USER': 'driver',
     }
 }
 
