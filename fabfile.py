@@ -3,7 +3,7 @@ from fabric.contrib.files import exists
 from StringIO import StringIO
 
 env.use_ssh_config = True
-env.hosts = ['monitor01', 'monitor02', 'monitor03', 'monitor04']
+env.hosts = ['monitor01', 'monitor02', 'monitor03', 'monitor04', 'monitor05', 'monitor06']
 
 MASTER = env.hosts[0]
 SLAVES = env.hosts[1:]
@@ -50,10 +50,10 @@ def cluster(task='start'):
 
 @task
 @roles('master')
-def config(settings='default', slaves=3):
+def config(settings='default', slaves=5):
     slaves = int(slaves)
     assert settings in ('default', 'multiple')
-    assert slaves in range(1, 3)
+    assert slaves in range(1, len(SLAVES)+1)
 
     put(StringIO(('\n'.join(SLAVES[:slaves])) + '\n'), 'spark/conf/slaves')
 
