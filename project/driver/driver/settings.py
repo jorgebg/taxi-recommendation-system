@@ -25,7 +25,7 @@ SECRET_KEY = '#j=d#_w++7hc%@b4vw!hf+_1&u(523ya4=asyv+$^a1-bo_kvo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pfc.jorgebg.com']
+ALLOWED_HOSTS = [] if DEBUG else ['pfc.jorgebg.com']
 
 
 # Application definition
@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'driver',
-        'USER': 'driver',
+        'USER': os.environ.get('USER'),
     }
 }
 

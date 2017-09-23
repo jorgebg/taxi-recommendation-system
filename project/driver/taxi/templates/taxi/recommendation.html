@@ -70,7 +70,8 @@
           animation: google.maps.Animation.DROP
         });
 
-      var directionsUrl = 'https://www.google.com/maps/dir/Current+Location/' + locations[i][0] + ',' + locations[i][1]
+      var destination = new google.maps.LatLng(locations[i][1], locations[i][0]);
+      var directionsUrl = 'https://www.google.com/maps/dir/' + center.toUrlValue() + '/' + destination.toUrlValue()
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
