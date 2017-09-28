@@ -53,10 +53,13 @@
 
 
     google.maps.event.addListener(map, 'click', function( event ){
-      window.location = "/?lat="+event.latLng.lat() + "&lng=" + event.latLng.lng();
+      $('#id_lat').val(event.latLng.lat());
+      $('#id_lng').val(event.latLng.lng());
+      $('form').submit()
     });
 
     var marker, i;
+    var directionsUrls = [];
 
     for (i = 0; i < locations.length; i++) {
       var letter = String.fromCharCode("A".charCodeAt(0) + i),
@@ -71,11 +74,12 @@
         });
 
       var destination = new google.maps.LatLng(locations[i][1], locations[i][0]);
-      var directionsUrl = 'https://www.google.com/maps/dir/' + center.toUrlValue() + '/' + destination.toUrlValue()
+      // https://developers.google.com/maps/documentation/urls/guide
+      directionsUrls.push('https://www.google.com/maps/dir/?api=1&origin=' + center.toUrlValue() + '&destination=' + destination.toUrlValue() + '&travelmode=driving');
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          window.open(directionsUrl,'_blank');
+          window.open(directionsUrls[i],'_blank');
         }
       })(marker, i));
     }
