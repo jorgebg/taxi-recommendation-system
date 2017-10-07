@@ -105,26 +105,6 @@ for i, (model, df_p) in enumerate(traces):
     filename = 'plots/clusters_points/hour_%s_clusters.html' % i
     py.plot(dict(data=scatters[:10], layout=layout), filename=filename)
 
-    # scatter = go.Scattermapbox(
-    #         lat=df_pp.pickup_latitude,
-    #         lon=df_pp.pickup_longitude,
-    #         mode='markers',
-    #         marker=go.Marker(
-    #             color=df_pp.prediction,
-    #             colorscale="Jet",
-    #             size=3
-    #         )
-    # )
-    #
-    # data.append(scatter)
-
-    # title = '%s-%s hours' % (groups[i].start, groups[i].stop)
-    # fig = dict(data=[scatter], layout=dict(title=title, **layout))
-    #
-    # filename = 'plots/clusters_points/hour_%s.html' % i
-    # py.plot(fig, filename=filename)
-    # break
-
 
 
 with Timer('hull', 'Scoring clusters'):
