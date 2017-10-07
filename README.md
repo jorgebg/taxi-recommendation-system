@@ -35,15 +35,20 @@ Trip time lower than 3 hours, 10663592
 
 ## Ejecucion
 
-Se prueba a computar los clusters y las puntuaciones de las 24 horas de 1 dia en diferentes configuraciones en los servidores cedidos en la universidad:
+Se prueba a computar los clusters en una sola máquina variando el número de registros N y el número de clústers K.
 
+Por otro lado, se prueba a computar los clusters y las puntuaciones de las 24 horas de 1 dia en diferentes configuraciones en los servidores cedidos en la universidad:
 
-1 Master, 1 Slave, 1 Worker
-1 Master, 1 Slave, 2 Workers (2 por esclavo)
-1 Master, 2 Slaves, 2 Workers
-1 Master, 2 Slaves, 4 Workers (2 por esclavo)
-1 Master, 3 Slaves, 3 Workers
-1 Master, 3 Slaves, 6 Workers (2 por esclavo)
+- 1 Master, 1 Slave, 1 Worker
+- 1 Master, 1 Slave, 2 Workers (2 por esclavo)
+- 1 Master, 2 Slaves, 2 Workers
+- 1 Master, 2 Slaves, 4 Workers (2 por esclavo)
+- 1 Master, 3 Slaves, 3 Workers
+- 1 Master, 3 Slaves, 6 Workers (2 por esclavo)
+- 1 Master, 4 Slaves, 4 Workers
+- 1 Master, 4 Slaves, 8 Workers (2 por esclavo)
+- 1 Master, 5 Slaves, 5 Workers
+- 1 Master, 5 Slaves, 10 Workers (2 por esclavo)
 
 El sistema esta pensado para computar los 7 dias, pero para estas pruebas se computa solo 1.
 
