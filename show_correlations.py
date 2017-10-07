@@ -185,33 +185,6 @@ for title, subplot_title, column in subplots:
     r = round(r_value, 2)
     subplot_titles.append(subplot_title + ", β={}, r={}".format(b, r))
 
-    # Regression
-    # all_errors = []
-    # best_error = None
-    # all_opts = []
-    # best_opts = None
-    # best_p_y = None
-    # for n in range(1, 10):
-    #     opts = np.polyfit(x, y, n)
-    #     all_opts.append(opts)
-    #     p_y = 0
-    #     for e, c in enumerate(reversed(opts)):
-    #         # print(c, '*', 'x', '**', e)
-    #         p_y += c*x**e
-    #     current_error = sklearn.metrics.mean_squared_error(y, p_y)
-    #     all_errors.append((n, current_error))
-    #     if best_error is None or current_error < best_error:
-    #         best_error = current_error
-    #         best_opts = opts
-    #         best_p_y = p_y
-    # regression_opts.append(best_opts)
-    #
-    # regression_trace = go.Scatter(x=x, y=best_p_y)
-    # regression_traces.append(regression_trace)
-    #
-    # p = scipy.stats.chisquare(y, best_p_y).pvalue
-    # subplot_titles.append(subplot_title + ", n={}, p={}".format(len(best_opts), round(p, 2)))
-
 
 fig = tools.make_subplots(
     rows=1, cols=len(traces), subplot_titles=subplot_titles, shared_yaxes=True)
@@ -230,61 +203,3 @@ for i, trace in enumerate(traces):
 
 py.plot(fig, filename='plots/agg_correlation.html')
 
-# ---
-
-
-
-# ---
-
-# from sklearn.gaussian_process import GaussianProcessRegressor
-#
-# x, y = traces[0].x, traces[0].y
-# x_r = x.values.reshape(-1, 1)
-#
-# gp = GaussianProcessRegressor()
-# model = gp.fit(x_r, y)
-#
-# y_pred, sigma = gp.predict(x_r, return_std=True)
-#
-# py.plot(dict(data=[go.Scatter(x=x, y=y, mode='markers'), go.Scatter(x=x, y=y_pred)], layout={'title':sigma}))
-
-
-
-
-
-# ---
-#
-# df_time_amount_agg = (
-#     df.groupBy(df.trip_time.cast(IntegerType()).alias('trip_time_int'))
-#     .agg({'total_amount': 'sum', '*': 'count'})
-#     .orderBy('trip_time_int').toPandas()
-# )
-#
-# x = df_time_amount_agg[df_time_amount_agg.columns[0]]
-# y = df_time_amount_agg[df_time_amount_agg.columns[1]]
-#
-# data = [go.Scatter(
-#     x=x,
-#     y=y,
-#     mode='markers',
-#     marker=go.Marker(
-#         size=3
-#     )
-# )]
-#
-# corr = round(pearsonr(x, y)[0], 2)
-# title = "Trip Time and Aggregated Total Amount, r={}".format(corr)
-# layout = go.Layout(
-#     title=title,
-#     xaxis=dict(
-#         title='Trip Time (minutes)',
-#     ),
-#     yaxis=dict(
-#         title='Aggregated Total Amount ($)'
-#     ),
-# )
-#
-# fig = dict(data=data, layout=layout)
-#
-#
-# py.plot(fig, filename='plots/agg_time_correlation.html')
