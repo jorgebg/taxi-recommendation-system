@@ -4,19 +4,6 @@
 > Tutor: Pablo Basanta Val
 
 
-## Limpieza de los datos
-
-```
-Total, 10906858
-Inside boros boundaries, 10736161
-Passenger count > 0 10735675
-Distance > 0, 10683655
-Distance < 100, 10683649
-Total amount > 0, 10680418
-Pickup time lower than Dropoff time, 10680131
-Trip time lower than 3 hours, 10663592
-```
-
 ## Análisis
 
 10 millones de trazas de los taxis amarillos de nueva york
@@ -33,7 +20,7 @@ Trip time lower than 3 hours, 10663592
 - Guardar los resultados en una base de datos espcial (PostGIS)
 - Crear una aplicación web sobre la base de datos para consultar los mejores lugares a los que ir, más cercanos, en un momento dado.
 
-## Ejecucion
+## Ejecución
 
 Se prueba a computar los clusters en una sola máquina variando el número de registros N y el número de clústers K.
 
