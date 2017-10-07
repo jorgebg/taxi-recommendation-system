@@ -50,16 +50,6 @@ from pandas import DataFrame
 import plotly.figure_factory as ff
 
 
-# Converting timestamp to date
-# corr_matrix = [['', *calendar.day_name]] + [
-#     [calendar.day_name[day_b]] + [DataFrame(data[day_a]['y']).corrwith(DataFrame(data[day_b]['y'])) for day_a in range(7)]
-#     for day_b in range(7)
-# ]
-# corr_matrix = [['', *calendar.day_name]] + [
-#     [calendar.day_name[day_b]] + [scipy.stats.chisquare(data[day_a]['y'], data[day_b]['y']).pvalue for day_a in range(7)]
-#     for day_b in range(7)
-# ]
-
 corr_matrix = [['', *calendar.day_name]] + [
     [calendar.day_name[day_b]] + [float(DataFrame(data[day_a]['y']).corrwith(DataFrame(data[day_b]['y'])).round(2)) for day_a in range(7)]
     for day_b in range(7)
