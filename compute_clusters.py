@@ -13,9 +13,6 @@ with Timer('read', 'Reading data'):
     df = df_base = spark.read.csv('data/yellow_tripdata_2016-01.csv', header=True, inferSchema=True)
 
 
-# with Timer('sample', 'Sampling data'):
-#     df = df.sample(False, 0.1)
-
 
 with Timer('process', 'Cleaning invalid data'):
     df = process(df)
