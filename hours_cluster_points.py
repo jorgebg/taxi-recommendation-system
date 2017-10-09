@@ -30,20 +30,10 @@ for i in range(K):
     model = kmeans.fit(df_t)
 
     wssse = model.computeCost(df_t)
-    # error.append(wssse)
 
     df_p = model.transform(df_t)
-    # rows = df_p.collect()
 
     traces.append((model, df_p, wssse))
-    # Shows the result.
-    # centers = model.clusterCenters()
-    # print("Cluster Centers: ")
-    # for center in centers:
-    #     print(center)
-
-
-
 
 from plotly import tools
 
@@ -56,8 +46,6 @@ from lib import mapbox
 layout = dict(
     autosize=True,
     hovermode='closest',
-    # width=500,
-    # height=600,
     mapbox=dict(
         accesstoken=mapbox.access_token,
         center=dict(
@@ -90,4 +78,3 @@ for i, (model, df_p, error) in enumerate(traces):
 
     filename = 'plots/clusters_points/hour_%s.html' % i
     py.plot(fig, filename=filename)
-    # break
