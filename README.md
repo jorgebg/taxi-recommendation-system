@@ -4,9 +4,13 @@
 > Tutor: Pablo Basanta Val
 
 
+
 ## Análisis
 
+
 10 millones de trazas de los taxis amarillos de nueva york
+
+![image](pictures/clusters-hours-group.png)
 
 - Se encuentran correlacciones entre beneficio economico y tiempo, distancia y numero de pasajeros.
 - Se encuentran que la frecuencia de viajes cambia significativamente segun el dia y la hora. Cada dia tiene un patron distinto excepto martes, miercoles y jueves.
@@ -19,6 +23,9 @@
 - Para cada dia de la semana y hora, encontrar los clusters de trazas con puntuación más alta, calculado en Spark.
 - Guardar los resultados en una base de datos espcial (PostGIS)
 - Crear una aplicación web sobre la base de datos para consultar los mejores lugares a los que ir, más cercanos, en un momento dado.
+
+
+![image](pictures/webapp-smartphone.jpeg)
 
 ## Ejecución
 
