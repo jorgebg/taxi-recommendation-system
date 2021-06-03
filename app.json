@@ -11,12 +11,12 @@
     ],
     "env": {
         "GOOGLE_MAPS_API_KEY": {
-            "description": "Your Google Maps API key (#TODO, not implemented yet)"
+            "description": "Your Google Maps API key (not implemented yet)"
         }
     },
     "buildpacks": [
         {
-            "url": "https://github.com/heroku/heroku-geo-buildpack.git",
+            "url": "https://github.com/heroku/heroku-geo-buildpack.git"
         },
         {
             "url": "heroku/python"
