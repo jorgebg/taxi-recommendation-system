@@ -1,0 +1,33 @@
+{
+    "name": "Taxi Recommendation System",
+    "description": "Jorge Barata's PFC",
+    "repository": "https://github.com/jorgebg/taxi-recommendation-system",
+    "keywords": [
+        "python",
+        "django",
+        "postgis",
+        "taxi",
+        "scipy"
+    ],
+    "env": {
+        "GOOGLE_MAPS_API_KEY": {
+            "description": "Your Google Maps API key (#TODO, not implemented yet)"
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "https://github.com/heroku/heroku-geo-buildpack.git",
+        },
+        {
+            "url": "heroku/python"
+        }
+    ],
+    "addons": [
+        {
+            "plan": "heroku-postgresql",
+            "options": {
+                "version": "9.5"
+            }
+        }
+    ]
+}

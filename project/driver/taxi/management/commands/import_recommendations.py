@@ -7,8 +7,11 @@ from django.contrib.gis.geos import Polygon
 class Command(BaseCommand):
     help = 'Unserializes and persists the recommendations from "result.pickle" file'
 
+    def add_arguments(self, parser):
+        parser.add_argument('--file', nargs='?', default='result.pickle', help="Path to the serialized recommendations file")
+
     def handle(self, *args, **options):
-        with open('result.pickle', 'rb') as f:
+        with open(options['file'], 'rb') as f:
             result = pickle.load(f)
             for weekday, hour, c_score, vertices in result:
                 vertices = [list(v) for v in vertices]

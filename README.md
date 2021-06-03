@@ -47,3 +47,19 @@ Por otro lado, se prueba a computar los clusters y las puntuaciones de las 24 ho
 El sistema esta pensado para computar los 7 dias, pero para estas pruebas se computa solo 1.
 
 En mi portátil, he computado los clusters sobre el 1% de las trazas analizadas, que es lo que se puede consultar en pfc.jorgebg.com.
+
+
+## Demo
+
+https://pfc.jorgebg.com
+
+### Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/jorgebg/taxi-recommendation-system)
+
+Open a shell into the dyno and run `./manage.py import_recommendations ~/result.pickle` after the deployment.
+
+```
+$ heroku pg:psql
+create extension postgis
+```
