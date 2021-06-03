@@ -1,4 +1,4 @@
-Django==1.11.5
+Django==1.11.29
 psycopg2==2.7.3.1
 python-dateutil==2.6.1
 django-argonauts==1.2.0
